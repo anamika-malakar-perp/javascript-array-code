@@ -74,26 +74,98 @@ console.log(arr3.includes(1));
 // The method arr.lastIndexOf is the same as indexOf, but looks for from right to left.
 console.log('last-index-of', arr3.lastIndexOf(0));
 
-
 // find - usecase(Imagine we have an array of objects. How do we find an object with the specific condition?)
 let users = [
-  {id: 1, name: "John"},
-  {id: 2, name: "Pete"},
-  {id: 3, name: "Mary"}
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Pete' },
+  { id: 3, name: 'Mary' },
 ];
 
-let user = users.find(item => item.id == 1);
-console.log('find',user) // return only that matched element
+let user = users.find((item) => item.id == 1);
+console.log('find', user); // return only that matched element
 
 // The arr.findIndex method has the same syntax, but returns the index where the element was found instead of the element itself. The value of -1 is returned if nothing is found.
 
 let users1 = [
-  {id: 1, name: "John"},
-  {id: 2, name: "Pete"},
-  {id: 3, name: "Mary"},
-  {id: 4, name: "John"}
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Pete' },
+  { id: 3, name: 'Mary' },
+  { id: 4, name: 'John' },
 ];
 
 // Find the index of the first John
-console.log(users1.findIndex(user => user.name == 'John')); // 0
-console.log(users1.findLastIndex(user => user.name == 'John')) //3
+console.log(users1.findIndex((user) => user.name == 'John')); // 0
+console.log(users1.findLastIndex((user) => user.name == 'John')); //3
+
+//FILTER
+//The find method looks for a single (first) element that makes the function return true.
+// If there may be many, we can use arr.filter(fn).
+
+let filterUsers = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Pete' },
+  { id: 3, name: 'Mary' },
+];
+
+// returns array of the first two users
+let someUsers = filterUsers.filter((item) => item.id < 3);
+
+console.log(someUsers.length); // 2
+
+//TRANSFORM AN ARRAY
+
+//MAP
+// The arr.map method is one of the most useful and often used.
+// It calls the function for each element of the array and returns the array of results.
+
+let lengths = ['Bilbo', 'Gandalf', 'Nazgul'].map((item) => item.length); //it return the modified array
+console.log(lengths); // 5,7,6
+
+//SORT
+// It also returns the sorted array, but the returned value is usually ignored, as arr itself is modified.
+//The items are sorted as strings by default
+
+let sortingArray = [1, 15, 2];
+
+// function compareNumeric(a, b) {
+//   if(a > b) return 1;
+//   if(a==b) return 0;
+//   if(a < b) return -1;
+// }
+
+// sortingArray.sort(compareNumeric);
+
+sortingArray.sort((a, b) => a - b);
+
+console.log(sortingArray);
+
+// SORTING STABILITY
+const students = [
+  { name: 'Alex', grade: 15 },
+  { name: 'Devlin', grade: 15 },
+  { name: 'Eagle', grade: 13 },
+  { name: 'Sam', grade: 14 },
+];
+
+students.sort((firstitem, seconditem) => firstitem.grade - seconditem.grade);
+
+console.log(students);
+
+//The students have the same grade, will remain in the same order as before calling the sort
+
+//REVERSE
+let arrReverse = [1, 2, 3, 4, 5];
+arrReverse.reverse();
+console.log(arrReverse);
+
+//SPLIT and JOIN
+let names = 'Bilbo, Gandalf, Nazgul';
+//split return the new array
+let arrNames = names.split(', ', 2);
+console.log(arrNames);
+
+//join the spilted strings
+//create string of arr items
+let arrData = ['Bilbo', 'Gandalf', 'Nazgul'];
+let str = arrData.join(';');
+console.log(str);
