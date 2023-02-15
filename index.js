@@ -169,3 +169,8 @@ console.log(arrNames);
 let arrData = ['Bilbo', 'Gandalf', 'Nazgul'];
 let str = arrData.join(';');
 console.log(str);
+
+// reduce/reduceRight
+// let value = arr.reduce((accumulator, item, index, array) {
+//   //..
+// }, [initial])
