@@ -37,7 +37,7 @@ console.log(arr1);
 //one less than last index
 let arr2 = ['t', 'e', 's', 't'];
 const newArray = arr2.slice(1, 3); //return the new array
-console.log(newArray);
+console.log('slice',newArray);
 
 //Push
 console.log(arr2.push({ a: 1 })); //return the length of the array
@@ -174,3 +174,93 @@ console.log(str);
 // let value = arr.reduce((accumulator, item, index, array) {
 //   //..
 // }, [initial])
+
+//accumulator -> is the result of the previous call equals intial the first call(if intial is provided)
+//item is the current array item
+//index is the position
+
+let arrToReduce = [1, 2, 3, 4]
+
+const data = arrToReduce.reduce((sum, item) => sum + item, 0)
+console.log('reduce', data)
+
+// That’s because if there’s no initial, then reduce takes the first element of the array as the initial value and starts the iteration from the 2nd element.
+
+// The method arr.reduceRight does the same, but goes from right to left.
+
+// To Check if the variable is array or not
+console.log(Array.isArray({}))
+console.log(Array.isArray([]))
+
+// Write a function filterRange(arr, a, b) that gets an array arr, looks for elements with values higher or equal to a and lower or equal to b and return a result as an array.
+
+let arrOfNumbers = [5, 3, 8, 1];
+
+const filterRange = (arr, a, b) => {
+  let data = arr.filter(item => item >= a && item<=b )
+  return data;
+}
+
+const newarr = filterRange(arrOfNumbers, 1, 4)
+console.log(newarr)
+console.log(arrOfNumbers)
+
+// Write a function filterRangeInPlace(arr, a, b) that gets an array arr and removes from it all values except those that are between a and b. The test is: a ≤ arr[i] ≤ b
+
+const filterRangeInPlace = (arr, a, b) => {
+   
+}
+
+filterRangeInPlace(arrOfNumbers, 1, 4)
+
+//SORT IN DECREASING ORDER
+let arrToSort = [5, 2, 1, -10, 8];
+
+arrToSort.sort((a, b) => b - a)
+console.log(arrToSort);
+
+//SORT BY AGE
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+function sortByAge(arr) {
+  arr.sort((a, b) => a.age - b.age);
+  console.log('data', arr)
+}
+
+let arrayToSort = [john, pete, mary]
+
+sortByAge(arrayToSort)
+console.log(arrayToSort)
+
+let usersList = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+// const groupById = (users) => {
+//    users.reduce((obj, value) => {
+//       obj[value.id] = value
+//    }, {})
+// }
+
+function groupById(array) {
+  return array.reduce((obj, value) => {
+    obj[value.id] = value;
+    return obj;
+  }, {})
+}
+
+console.log(groupById(usersList))
+
+//Trailing comma
+let fruits = [
+  "Apple",
+  "Orange",
+  "Plum",
+];
+// The “trailing comma” style makes it easier to insert/remove items, because all lines become alike
+
+//Negative index
