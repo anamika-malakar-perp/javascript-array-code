@@ -30,7 +30,7 @@ console.log(arr); //it will manipulated the originl array
 let arr1 = ['I', 'study', 'JavaScript', 'right', 'now'];
 
 console.log(arr1.splice(0, 3, "Let's", 'dance'));
-console.log(arr1);
+console.log('splice',arr1);
 //It is also possible to insert element without removal by keeping delete count as 0.
 
 //arr.slice([start], [end])
@@ -287,3 +287,21 @@ console.log('pre', predefinedArr);
 let stringArr = [1, 2, 3];
 
 console.log(String(arr) === '1,2,3'); // true
+
+const arrayOfArray = [1, 2, 3 , [4, 5, 6 , [7, 8 , 9]]];
+
+manipulateArray = (array) => {
+  let arr = [];
+  for(let i = 0 ; i<array.length; i++) {
+    if(Array.isArray(array[i])) {
+      arr = arr.concat(manipulateArray(array[i]))
+    } else {
+      arr.push(array[i])
+    }
+  }
+
+  return arr
+}
+
+const newFlateenAraay = manipulateArray(arrayOfArray);
+console.log(newFlateenAraay)
